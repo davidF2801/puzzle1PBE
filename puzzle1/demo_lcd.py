@@ -5,9 +5,7 @@
 # Created by Matthew Timmons-Brown for The Raspberry Pi Guy YouTube channel
 
 # Import necessary libraries for communication and display use
-import drivers
-import sys
-from time import sleep
+import drivers #Importem la carpeta drivers
 
 # Load the driver and set it to "display"
 display = drivers.Lcd()
