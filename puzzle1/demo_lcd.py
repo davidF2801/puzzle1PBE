@@ -10,12 +10,12 @@ import sys
 from time import sleep
 
 # Load the driver and set it to "display"
-# If you use something from the driver library use the "display." prefix first
 display = drivers.Lcd()
 
 # Main body of code
-
-def show_lines(message, long):
+#La següent funció la usaré per a que el string entrat es col·loqui a les files corresponents per ordre, sense fer això, 
+#quan un string ocupa més de 20 caracters, es coloca en l'order incorrecte
+def show_lines(message, long): 
        if(long<=20):
             display.lcd_display_string(message,1)
        elif(long<=40):
@@ -35,17 +35,15 @@ def show_lines(message, long):
             
 if __name__ == "__main__":
     try:
-            # Remember that your sentences can only be 16 characters long!
-           statement = "Escribe lo que quieras imprimir: "
+          
+           statement = "Escribe lo que quieras imprimir: " #primer de tot treiem el missatge per pantalla de que s'escrigui el que es vol imprimir
            show_lines(statement,len(statement))
            message=input(statement)
-           display.lcd_clear()
-           long = len(message)
-           show_lines(message,long)
+           display.lcd_clear() #Un cop entrat el missatge es neteja la pantalla
+           show_lines(message,len(message)) #Finalment es mostra el missatge per pantalla
            
-            # Give time for the message to be read
-    except KeyboardInterrupt:
-        # If there is a KeyboardInterrupt (when you press ctrl+c), exit the program and cleanup
+           
+    except KeyboardInterrupt: #Quan es prem ctrl + c, es neteja la pantalla i s'acaba l'execució del programa
         print("Cleaning up!")
         display.lcd_clear()
         
